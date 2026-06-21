@@ -1,45 +1,47 @@
-const addNome = document.getElementById('nome');
-const addPreco = document.getElementById('preco');
-const carrinho = document.getElementById('carrinho');
-const totalElement = document.getElementById('total');
-const historicoDiv = document.getElementById('historico');
-const usuarioInput = document.getElementById('usuario');
-const senhaInput = document.getElementById('senha');
-const entrarBtn = document.getElementById('entrar');
-const usuario = document.getElementById('usuario');
-const senha = document.getElementById('senha');
-
+const addNome = document.getElementById("nome");
+const addPreco = document.getElementById("preco");
+const carrinho = document.getElementById("carrinho");
+const totalElement = document.getElementById("total");
+const historicoDiv = document.getElementById("historico");
+const usuarioInput = document.getElementById("usuario");
+const senhaInput = document.getElementById("senha");
+const entrarBtn = document.getElementById("entrar");
+const usuario = document.getElementById("usuario");
+const senha = document.getElementById("senha");
 
 function entrar() {
     let usuarioVal = usuario.value.trim();
     let senhaVal = senha.value.trim();
 
-    if (usuarioVal === 'admin' && senhaVal === '123') {
-        alert('Login bem-sucedido!');
+    if (usuarioVal === "admin" && senhaVal === "reduce") {
+        alert("Login bem-sucedido!");
+        
+        usuario.value = "";
+        senha.value = "";
         return;
-
     } else {
-        alert('Usuário ou senha incorretos. Tente novamente.');
+        alert("Usuário ou senha incorretos. Tente novamente.");
+        usuario.value = "";
+        senha.value = "";
         return;
     }
 }
-entrarBtn.addEventListener('click', entrar);
+entrarBtn.addEventListener("click", entrar);
 
 function temPermissão(role) {
     const usuarioVal = usuarioInput.value.trim();
     const senhaVal = senhaInput.value.trim();
-    if (role === 'admin') {
-        return usuarioVal === 'admin' && senhaVal === '123';
+    if (role === "admin") {
+        return usuarioVal === "admin" && senhaVal === "reduce";
     }
     return false;
 }
-
 
 //carrega do navegador
 let produtos;
 
 try {
-    produtos = JSON.parse(localStorage.getItem('produtos'));
+    produtos = JSON.parse(localStorage.getItem("produtos"));
     if (!Array.isArray(produtos)) {
         produtos = [];
     }
@@ -48,36 +50,36 @@ try {
 }
 
 function salvar() {
-    localStorage.setItem('produtos', JSON.stringify(produtos));
+    localStorage.setItem("produtos", JSON.stringify(produtos));
 }
 
 function addProduto() {
-
     const nome = addNome.value.trim();
     const preco = parseFloat(addPreco.value);
 
     if (nome && !isNaN(preco)) {
         const produto = {
             nome: nome,
-            preco: parseFloat(preco)
+            preco: parseFloat(preco),
         };
         produtos.push(produto);
-        alert(`Produto adicionado: ${produto.nome} - R$${produto.preco.toFixed(2)}`);
+        alert(
+            `Produto adicionado: ${produto.nome} - R$${produto.preco.toFixed(2)}`,
+        );
         salvar();
-        addNome.value = '';
-        addPreco.value = '';
+        addNome.value = "";
+        addPreco.value = "";
         produtosCadastrados();
     } else {
-        alert('Por favor, preencha ambos os campos: nome e preço.');
+        alert("Por favor, preencha ambos os campos: nome e preço.");
     }
 }
 
 function produtosCadastrados() {
+    if (!document.getElementById("produtos")) return;
 
-    if (!document.getElementById('produtos')) return;
-
-    let div = document.getElementById('produtos');
-    div.innerHTML = '';
+    let div = document.getElementById("produtos");
+    div.innerHTML = "";
 
     produtos.forEach((produto, index) => {
         let preco = Number(produto.preco) || 0;
@@ -90,10 +92,9 @@ function produtosCadastrados() {
     });
 }
 
-
 function removerProduto(index) {
-    if (!temPermissão('admin')) {
-        alert('Apenas o administrador pode remover produtos.');
+    if (!temPermissão("admin")) {
+        alert("Apenas o administrador pode remover produtos.");
         return;
     }
 
@@ -105,7 +106,7 @@ produtosCadastrados();
 
 function removerCarrinho(index) {
     compras.splice(index, 1);
-    carrinho.innerHTML = '';
+    carrinho.innerHTML = "";
     compras.forEach((produto, indx) => {
         carrinho.innerHTML += `
             <p>${produto.nome} - R$${produto.preco.toFixed(2)}
@@ -120,7 +121,7 @@ function removerCarrinho(index) {
 let compras;
 
 try {
-    compras = JSON.parse(localStorage.getItem('compras'));
+    compras = JSON.parse(localStorage.getItem("compras"));
     if (!Array.isArray(compras)) {
         compras = [];
     }
@@ -131,13 +132,13 @@ try {
 atualizarCarrinho();
 
 function salvarCompras() {
-    localStorage.setItem('compras', JSON.stringify(compras));
+    localStorage.setItem("compras", JSON.stringify(compras));
 }
 
 function addCarrinho(produtoIndex) {
     if (!produtos[produtoIndex]) return;
 
-    let div = document.getElementById('carrinho');
+    let div = document.getElementById("carrinho");
     let produto = produtos[produtoIndex];
     compras.push(produto);
     salvarCompras();
@@ -149,11 +150,10 @@ function addCarrinho(produtoIndex) {
     `;
 }
 
-
 function atualizarCarrinho() {
     if (!carrinho) return;
 
-    carrinho.innerHTML = '';
+    carrinho.innerHTML = "";
     compras.forEach((produto, index) => {
         carrinho.innerHTML += `
             <p>${produto.nome} - R$${produto.preco.toFixed(2)}
@@ -171,21 +171,20 @@ function atualizarTotal() {
 
 function finalizarVenda() {
     if (compras.length === 0) {
-        alert('O carrinho está vazio.');
+        alert("O carrinho está vazio.");
         return;
     }
 
-
     let total = compras.reduce((acc, produto) => acc + Number(produto.preco), 0);
 
-    let historico = JSON.parse(localStorage.getItem('historico')) || [];
+    let historico = JSON.parse(localStorage.getItem("historico")) || [];
     historico.push({
         produtos: compras,
         total: total,
         data: new Date().toLocaleDateString(),
-        hora: new Date().toLocaleTimeString()
+        hora: new Date().toLocaleTimeString(),
     });
-    localStorage.setItem('historico', JSON.stringify(historico));
+    localStorage.setItem("historico", JSON.stringify(historico));
 
     alert(`Venda finalizada! Total: R$${total.toFixed(2)}`);
     compras = [];
@@ -194,12 +193,11 @@ function finalizarVenda() {
 }
 
 function carregarHistorico() {
-    let historico = JSON.parse(localStorage.getItem('historico')) || [];
+    let historico = JSON.parse(localStorage.getItem("historico")) || [];
     if (!historicoDiv) return;
 
-    historicoDiv.innerHTML = '';
+    historicoDiv.innerHTML = "";
     historico.forEach((venda, index) => {
-
         historicoDiv.innerHTML += `
         <p>
         Venda ${index + 1}: R$${venda.total.toFixed(2)} - ${venda.data} ${venda.hora}
@@ -210,17 +208,15 @@ function carregarHistorico() {
 }
 
 function deletarVenda(index) {
-    if (!temPermissão('admin')) {
-        alert('Apenas o administrador pode deletar vendas.');
+    if (!temPermissão("admin")) {
+        alert("Apenas o administrador pode deletar vendas.");
         return;
     }
 
-    let historico = JSON.parse(localStorage.getItem('historico')) || [];
+    let historico = JSON.parse(localStorage.getItem("historico")) || [];
     historico.splice(index, 1);
-    localStorage.setItem('historico', JSON.stringify(historico));
+    localStorage.setItem("historico", JSON.stringify(historico));
     carregarHistorico();
 }
 
 carregarHistorico();
-
-

@@ -1,6 +1,331 @@
-const a0_0x146b47 = a0_0x26c5; 
-function a0_0x26c5(_0x3c1752, _0x46a9fd) { _0x3c1752 = _0x3c1752 - 0x1e4; 
-    const _0x85b999 = a0_0x85b9(); 
-    let _0x26c5c5 = _0x85b999[_0x3c1752]; 
-    return _0x26c5c5; } 
-    (function (_0x3d2c77, _0x4b7398) { const _0x23d18 = a0_0x26c5, _0x31142b = _0x3d2c77(); while (!![]) { try { const _0x44205e = parseInt(_0x23d18(0x1eb)) / 0x1 * (parseInt(_0x23d18(0x208)) / 0x2) + parseInt(_0x23d18(0x20e)) / 0x3 + parseInt(_0x23d18(0x21d)) / 0x4 * (-parseInt(_0x23d18(0x20b)) / 0x5) + -parseInt(_0x23d18(0x1ef)) / 0x6 * (parseInt(_0x23d18(0x206)) / 0x7) + -parseInt(_0x23d18(0x1e4)) / 0x8 * (parseInt(_0x23d18(0x1e5)) / 0x9) + -parseInt(_0x23d18(0x1fc)) / 0xa + parseInt(_0x23d18(0x213)) / 0xb; if (_0x44205e === _0x4b7398) break; else _0x31142b['push'](_0x31142b['shift']()); } catch (_0x2091f6) { _0x31142b['push'](_0x31142b['shift']()); } } }(a0_0x85b9, 0xf1713)); const addNome = document[a0_0x146b47(0x1ea)](a0_0x146b47(0x1fa)), addPreco = document[a0_0x146b47(0x1ea)](a0_0x146b47(0x1f7)), carrinho = document[a0_0x146b47(0x1ea)](a0_0x146b47(0x20a)), totalElement = document[a0_0x146b47(0x1ea)](a0_0x146b47(0x1e6)), historicoDiv = document[a0_0x146b47(0x1ea)]('historico'), usuarioInput = document['getElementById'](a0_0x146b47(0x205)), senhaInput = document[a0_0x146b47(0x1ea)]('senha'), entrarBtn = document[a0_0x146b47(0x1ea)](a0_0x146b47(0x1ee)), usuario = document['getElementById'](a0_0x146b47(0x205)), senha = document[a0_0x146b47(0x1ea)]('senha'); function entrar() { const _0x229b5c = a0_0x146b47; let _0x4c907d = usuario[_0x229b5c(0x212)][_0x229b5c(0x221)](), _0x18ca52 = senha['value']['trim'](); if (_0x4c907d === _0x229b5c(0x215) && _0x18ca52 === _0x229b5c(0x218)) { alert(_0x229b5c(0x1ec)); return; } else { alert('Usuário\x20ou\x20senha\x20incorretos.\x20Tente\x20novamente.'); return; } } entrarBtn[a0_0x146b47(0x1ed)](a0_0x146b47(0x1f9), entrar); function temPermissão(_0x242183) { const _0x11367a = a0_0x146b47, _0x14dc5a = usuarioInput[_0x11367a(0x212)][_0x11367a(0x221)](), _0x19f9c8 = senhaInput['value']['trim'](); if (_0x242183 === _0x11367a(0x215)) return _0x14dc5a === _0x11367a(0x215) && _0x19f9c8 === _0x11367a(0x218); return ![]; } let produtos; try { produtos = JSON[a0_0x146b47(0x203)](localStorage[a0_0x146b47(0x1f0)](a0_0x146b47(0x1f3))), !Array[a0_0x146b47(0x20c)](produtos) && (produtos = []); } catch (a0_0x24ccdb) { produtos = []; } function salvar() { const _0x14c468 = a0_0x146b47; localStorage['setItem'](_0x14c468(0x1f3), JSON[_0x14c468(0x219)](produtos)); } function a0_0x85b9() { const _0x1f913d = ['Produto\x20adicionado:\x20', 'admin', 'Apenas\x20o\x20administrador\x20pode\x20deletar\x20vendas.', 'toLocaleTimeString', '123', 'stringify', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22removerCarrinho(', 'innerHTML', 'textContent', '60YKDTPe', ')\x22>Remover</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', '\x0a\x20\x20\x20\x20<button\x20onclick=\x22removerCarrinho(', 'push', 'trim', '376NAIDBd', '345996uyzLcQ', 'total', 'toFixed', 'Venda\x20finalizada!\x20Total:\x20R$', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20Venda\x20', 'getElementById', '28444Dznlhi', 'Login\x20bem-sucedido!', 'addEventListener', 'entrar', '4871814wUHAbZ', 'getItem', ')\x22>Comprar</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</p>', 'hora', 'produtos', '\x0a\x20\x20\x20\x20<p>', 'reduce', 'toLocaleDateString', 'preco', ')\x22>Remover</button>\x0a\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20', 'click', 'nome', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22deletarVenda(', '11068980jGaSdv', '<p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22removerProduto(', 'forEach', 'Apenas\x20o\x20administrador\x20pode\x20remover\x20produtos.', ')\x22>Remover</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22addCarrinho(', 'splice', 'parse', '\x20-\x20R$', 'usuario', '14NIISNG', 'setItem', '26umWKOP', 'data', 'carrinho', '45990GPWmmW', 'isArray', ':\x20R$', '2933985VazNlJ', 'compras', 'historico', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>', 'value', '47485394OCioEk']; a0_0x85b9 = function () { return _0x1f913d; }; return a0_0x85b9(); } function addProduto() { const _0x5581ef = a0_0x146b47, _0x34bfc2 = addNome[_0x5581ef(0x212)]['trim'](), _0x3dee0b = parseFloat(addPreco['value']); if (_0x34bfc2 && !isNaN(_0x3dee0b)) { const _0x1756a1 = { 'nome': _0x34bfc2, 'preco': parseFloat(_0x3dee0b) }; produtos[_0x5581ef(0x220)](_0x1756a1), alert(_0x5581ef(0x214) + _0x1756a1['nome'] + _0x5581ef(0x204) + _0x1756a1[_0x5581ef(0x1f7)][_0x5581ef(0x1e7)](0x2)), salvar(), addNome[_0x5581ef(0x212)] = '', addPreco[_0x5581ef(0x212)] = '', produtosCadastrados(); } else alert('Por\x20favor,\x20preencha\x20ambos\x20os\x20campos:\x20nome\x20e\x20preço.'); } function produtosCadastrados() { const _0x4fd4c5 = a0_0x146b47; if (!document['getElementById'](_0x4fd4c5(0x1f3))) return; let _0x2ccd66 = document['getElementById'](_0x4fd4c5(0x1f3)); _0x2ccd66[_0x4fd4c5(0x21b)] = '', produtos[_0x4fd4c5(0x1ff)]((_0x3e5929, _0x54092d) => { const _0xd9c77b = _0x4fd4c5; let _0x33f9a0 = Number(_0x3e5929['preco']) || 0x0; _0x2ccd66[_0xd9c77b(0x21b)] += _0xd9c77b(0x1fd) + (_0x54092d + 0x1) + '.\x20' + _0x3e5929['nome'] + _0xd9c77b(0x204) + _0x33f9a0[_0xd9c77b(0x1e7)](0x2) + _0xd9c77b(0x1fe) + _0x54092d + _0xd9c77b(0x201) + _0x54092d + _0xd9c77b(0x1f1); }); } function removerProduto(_0x4b35b1) { const _0x1600c1 = a0_0x146b47; if (!temPermissão(_0x1600c1(0x215))) { alert(_0x1600c1(0x200)); return; } produtos[_0x1600c1(0x202)](_0x4b35b1, 0x1), salvar(), produtosCadastrados(); } produtosCadastrados(); function removerCarrinho(_0x3b4883) { const _0x479159 = a0_0x146b47; compras[_0x479159(0x202)](_0x3b4883, 0x1), carrinho[_0x479159(0x21b)] = '', compras[_0x479159(0x1ff)]((_0x28f6bf, _0x381721) => { const _0x1ce175 = _0x479159; carrinho[_0x1ce175(0x21b)] += _0x1ce175(0x211) + _0x28f6bf['nome'] + _0x1ce175(0x204) + _0x28f6bf['preco'][_0x1ce175(0x1e7)](0x2) + _0x1ce175(0x21a) + _0x381721 + _0x1ce175(0x21e); }), salvarCompras(); } let compras; try { compras = JSON[a0_0x146b47(0x203)](localStorage[a0_0x146b47(0x1f0)]('compras')), !Array[a0_0x146b47(0x20c)](compras) && (compras = []); } catch (a0_0x53a2ee) { compras = []; } atualizarCarrinho(); function salvarCompras() { const _0x54b6b6 = a0_0x146b47; localStorage['setItem'](_0x54b6b6(0x20f), JSON[_0x54b6b6(0x219)](compras)); } function addCarrinho(_0xdf958f) { const _0x3413ba = a0_0x146b47; if (!produtos[_0xdf958f]) return; let _0x1b8fff = document['getElementById'](_0x3413ba(0x20a)), _0x3f1a44 = produtos[_0xdf958f]; compras[_0x3413ba(0x220)](_0x3f1a44), salvarCompras(), _0x1b8fff[_0x3413ba(0x21b)] += _0x3413ba(0x1f4) + _0x3f1a44[_0x3413ba(0x1fa)] + '\x20-\x20R$' + _0x3f1a44[_0x3413ba(0x1f7)][_0x3413ba(0x1e7)](0x2) + _0x3413ba(0x21f) + (compras['length'] - 0x1) + _0x3413ba(0x1f8); } function atualizarCarrinho() { const _0x2993be = a0_0x146b47; if (!carrinho) return; carrinho[_0x2993be(0x21b)] = '', compras[_0x2993be(0x1ff)]((_0x5dbe09, _0x37a850) => { const _0x3a6f31 = _0x2993be; carrinho[_0x3a6f31(0x21b)] += _0x3a6f31(0x211) + _0x5dbe09[_0x3a6f31(0x1fa)] + _0x3a6f31(0x204) + _0x5dbe09[_0x3a6f31(0x1f7)][_0x3a6f31(0x1e7)](0x2) + _0x3a6f31(0x21a) + _0x37a850 + ')\x22>Remover</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'; }), atualizarTotal(); } function atualizarTotal() { const _0x51c605 = a0_0x146b47; let _0x36d6d1 = compras[_0x51c605(0x1f5)]((_0x4af553, _0x1f3408) => _0x4af553 + Number(_0x1f3408[_0x51c605(0x1f7)]), 0x0); totalElement[_0x51c605(0x21c)] = _0x36d6d1[_0x51c605(0x1e7)](0x2); } function finalizarVenda() { const _0x1085ca = a0_0x146b47; if (compras['length'] === 0x0) { alert('O\x20carrinho\x20está\x20vazio.'); return; } let _0x4f3b66 = compras[_0x1085ca(0x1f5)]((_0x401d2d, _0xac5f2d) => _0x401d2d + Number(_0xac5f2d[_0x1085ca(0x1f7)]), 0x0), _0x297e1a = JSON[_0x1085ca(0x203)](localStorage[_0x1085ca(0x1f0)]('historico')) || []; _0x297e1a[_0x1085ca(0x220)]({ 'produtos': compras, 'total': _0x4f3b66, 'data': new Date()[_0x1085ca(0x1f6)](), 'hora': new Date()[_0x1085ca(0x217)]() }), localStorage['setItem']('historico', JSON[_0x1085ca(0x219)](_0x297e1a)), alert(_0x1085ca(0x1e8) + _0x4f3b66[_0x1085ca(0x1e7)](0x2)), compras = [], salvarCompras(), atualizarCarrinho(); } function carregarHistorico() { const _0x2df088 = a0_0x146b47; let _0x10de21 = JSON[_0x2df088(0x203)](localStorage[_0x2df088(0x1f0)](_0x2df088(0x210))) || []; if (!historicoDiv) return; historicoDiv['innerHTML'] = '', _0x10de21[_0x2df088(0x1ff)]((_0x24f3bb, _0x119be5) => { const _0x31bd47 = _0x2df088; historicoDiv[_0x31bd47(0x21b)] += _0x31bd47(0x1e9) + (_0x119be5 + 0x1) + _0x31bd47(0x20d) + _0x24f3bb[_0x31bd47(0x1e6)]['toFixed'](0x2) + '\x20-\x20' + _0x24f3bb[_0x31bd47(0x209)] + '\x20' + _0x24f3bb[_0x31bd47(0x1f2)] + _0x31bd47(0x1fb) + _0x119be5 + ')\x22>Deletar</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</p>'; }); } function deletarVenda(_0x506ab) { const _0x4b7654 = a0_0x146b47; if (!temPermissão(_0x4b7654(0x215))) { alert(_0x4b7654(0x216)); return; } let _0x496a9d = JSON[_0x4b7654(0x203)](localStorage[_0x4b7654(0x1f0)]('historico')) || []; _0x496a9d[_0x4b7654(0x202)](_0x506ab, 0x1), localStorage[_0x4b7654(0x207)](_0x4b7654(0x210), JSON[_0x4b7654(0x219)](_0x496a9d)), carregarHistorico(); } carregarHistorico();
+const a0_0x68a0a9 = a0_0x20e1;
+(function (_0xbc043b, _0x5264cc) {
+  const _0x3cb163 = a0_0x20e1,
+    _0x4399bd = _0xbc043b();
+  while (!![]) {
+    try {
+      const _0x1bb48f =
+        parseInt(_0x3cb163(0x131)) / 0x1 +
+        (parseInt(_0x3cb163(0x129)) / 0x2) *
+          (parseInt(_0x3cb163(0x10e)) / 0x3) +
+        parseInt(_0x3cb163(0x11c)) / 0x4 +
+        (parseInt(_0x3cb163(0x108)) / 0x5) *
+          (parseInt(_0x3cb163(0x128)) / 0x6) +
+        (parseInt(_0x3cb163(0x119)) / 0x7) *
+          (-parseInt(_0x3cb163(0x109)) / 0x8) +
+        parseInt(_0x3cb163(0x122)) / 0x9 +
+        -parseInt(_0x3cb163(0x117)) / 0xa;
+      if (_0x1bb48f === _0x5264cc) break;
+      else _0x4399bd["push"](_0x4399bd["shift"]());
+    } catch (_0x1fa81f) {
+      _0x4399bd["push"](_0x4399bd["shift"]());
+    }
+  }
+})(a0_0x53ee, 0x432b2);
+const addNome = document[a0_0x68a0a9(0x134)](a0_0x68a0a9(0x100)),
+  addPreco = document[a0_0x68a0a9(0x134)](a0_0x68a0a9(0x135)),
+  carrinho = document[a0_0x68a0a9(0x134)](a0_0x68a0a9(0x126)),
+  totalElement = document["getElementById"](a0_0x68a0a9(0x112)),
+  historicoDiv = document[a0_0x68a0a9(0x134)](a0_0x68a0a9(0x133)),
+  usuarioInput = document[a0_0x68a0a9(0x134)]("usuario"),
+  senhaInput = document["getElementById"](a0_0x68a0a9(0x105)),
+  entrarBtn = document[a0_0x68a0a9(0x134)]("entrar"),
+  usuario = document["getElementById"](a0_0x68a0a9(0x132)),
+  senha = document[a0_0x68a0a9(0x134)](a0_0x68a0a9(0x105));
+function entrar() {
+  const _0x14fde7 = a0_0x68a0a9;
+  let _0x5ee127 = usuario[_0x14fde7(0x123)][_0x14fde7(0x107)](),
+    _0x4cbb4c = senha[_0x14fde7(0x123)]["trim"]();
+  if (_0x5ee127 === _0x14fde7(0x11d) && _0x4cbb4c === "reduce") {
+    (alert(_0x14fde7(0x136)),
+      (usuario[_0x14fde7(0x123)] = ""),
+      (senha[_0x14fde7(0x123)] = ""));
+    return;
+  } else {
+    (alert(_0x14fde7(0x10f)), (usuario["value"] = ""), (senha["value"] = ""));
+    return;
+  }
+}
+entrarBtn[a0_0x68a0a9(0x104)](a0_0x68a0a9(0x120), entrar);
+function temPermissão(_0x138f72) {
+  const _0x5a6f2c = a0_0x68a0a9,
+    _0x547e05 = usuarioInput["value"][_0x5a6f2c(0x107)](),
+    _0x2b4413 = senhaInput["value"][_0x5a6f2c(0x107)]();
+  if (_0x138f72 === _0x5a6f2c(0x11d))
+    return _0x547e05 === _0x5a6f2c(0x11d) && _0x2b4413 === "reduce";
+  return ![];
+}
+let produtos;
+try {
+  ((produtos = JSON[a0_0x68a0a9(0x11e)](
+    localStorage["getItem"](a0_0x68a0a9(0xfd)),
+  )),
+    !Array["isArray"](produtos) && (produtos = []));
+} catch (a0_0xcb9a76) {
+  produtos = [];
+}
+function salvar() {
+  const _0x464c28 = a0_0x68a0a9;
+  localStorage["setItem"](_0x464c28(0xfd), JSON[_0x464c28(0x12d)](produtos));
+}
+function addProduto() {
+  const _0x297243 = a0_0x68a0a9,
+    _0x46c01f = addNome[_0x297243(0x123)][_0x297243(0x107)](),
+    _0x1a7a9f = parseFloat(addPreco[_0x297243(0x123)]);
+  if (_0x46c01f && !isNaN(_0x1a7a9f)) {
+    const _0x26163d = { nome: _0x46c01f, preco: parseFloat(_0x1a7a9f) };
+    (produtos[_0x297243(0x10a)](_0x26163d),
+      alert(
+        _0x297243(0x11a) +
+          _0x26163d[_0x297243(0x100)] +
+          _0x297243(0x115) +
+          _0x26163d[_0x297243(0x135)][_0x297243(0x12c)](0x2),
+      ),
+      salvar(),
+      (addNome["value"] = ""),
+      (addPreco[_0x297243(0x123)] = ""),
+      produtosCadastrados());
+  } else alert(_0x297243(0x106));
+}
+function produtosCadastrados() {
+  const _0x1a4d80 = a0_0x68a0a9;
+  if (!document[_0x1a4d80(0x134)](_0x1a4d80(0xfd))) return;
+  let _0x3a8af1 = document[_0x1a4d80(0x134)](_0x1a4d80(0xfd));
+  ((_0x3a8af1["innerHTML"] = ""),
+    produtos[_0x1a4d80(0x10b)]((_0x26257f, _0x1ab52a) => {
+      const _0x8dd920 = _0x1a4d80;
+      let _0xff3074 = Number(_0x26257f[_0x8dd920(0x135)]) || 0x0;
+      _0x3a8af1[_0x8dd920(0x111)] +=
+        "<p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20" +
+        (_0x1ab52a + 0x1) +
+        ".\x20" +
+        _0x26257f["nome"] +
+        _0x8dd920(0x115) +
+        _0xff3074["toFixed"](0x2) +
+        _0x8dd920(0x116) +
+        _0x1ab52a +
+        _0x8dd920(0x130) +
+        _0x1ab52a +
+        _0x8dd920(0x113);
+    }));
+}
+function removerProduto(_0x2cc3b9) {
+  const _0x4eaea4 = a0_0x68a0a9;
+  if (!temPermissão(_0x4eaea4(0x11d))) {
+    alert("Apenas\x20o\x20administrador\x20pode\x20remover\x20produtos.");
+    return;
+  }
+  (produtos[_0x4eaea4(0x12f)](_0x2cc3b9, 0x1), salvar(), produtosCadastrados());
+}
+function a0_0x20e1(_0x10a277, _0x315d3b) {
+  _0x10a277 = _0x10a277 - 0xfc;
+  const _0x53ee81 = a0_0x53ee();
+  let _0x20e183 = _0x53ee81[_0x10a277];
+  return _0x20e183;
+}
+produtosCadastrados();
+function removerCarrinho(_0x3f1088) {
+  const _0x5e2505 = a0_0x68a0a9;
+  (compras["splice"](_0x3f1088, 0x1),
+    (carrinho[_0x5e2505(0x111)] = ""),
+    compras[_0x5e2505(0x10b)]((_0x5d60e2, _0x22678c) => {
+      const _0x281474 = _0x5e2505;
+      carrinho[_0x281474(0x111)] +=
+        _0x281474(0x12b) +
+        _0x5d60e2["nome"] +
+        "\x20-\x20R$" +
+        _0x5d60e2[_0x281474(0x135)][_0x281474(0x12c)](0x2) +
+        "\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22removerCarrinho(" +
+        _0x22678c +
+        _0x281474(0x114);
+    }),
+    salvarCompras());
+}
+let compras;
+try {
+  ((compras = JSON[a0_0x68a0a9(0x11e)](
+    localStorage[a0_0x68a0a9(0xfc)]("compras"),
+  )),
+    !Array[a0_0x68a0a9(0x10d)](compras) && (compras = []));
+} catch (a0_0x5060fa) {
+  compras = [];
+}
+atualizarCarrinho();
+function salvarCompras() {
+  const _0x1e6297 = a0_0x68a0a9;
+  localStorage["setItem"](_0x1e6297(0xff), JSON[_0x1e6297(0x12d)](compras));
+}
+function addCarrinho(_0x1d29bb) {
+  const _0x23b99b = a0_0x68a0a9;
+  if (!produtos[_0x1d29bb]) return;
+  let _0x3e33a3 = document["getElementById"]("carrinho"),
+    _0x477006 = produtos[_0x1d29bb];
+  (compras["push"](_0x477006),
+    salvarCompras(),
+    (_0x3e33a3["innerHTML"] +=
+      _0x23b99b(0x102) +
+      _0x477006[_0x23b99b(0x100)] +
+      _0x23b99b(0x115) +
+      _0x477006[_0x23b99b(0x135)][_0x23b99b(0x12c)](0x2) +
+      _0x23b99b(0x118) +
+      (compras[_0x23b99b(0x124)] - 0x1) +
+      ")\x22>Remover</button>\x0a\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20"));
+}
+function atualizarCarrinho() {
+  const _0x530b1c = a0_0x68a0a9;
+  if (!carrinho) return;
+  ((carrinho[_0x530b1c(0x111)] = ""),
+    compras[_0x530b1c(0x10b)]((_0x2fe887, _0x5bf03f) => {
+      const _0x5dea1f = _0x530b1c;
+      carrinho["innerHTML"] +=
+        _0x5dea1f(0x12b) +
+        _0x2fe887["nome"] +
+        _0x5dea1f(0x115) +
+        _0x2fe887[_0x5dea1f(0x135)][_0x5dea1f(0x12c)](0x2) +
+        "\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22removerCarrinho(" +
+        _0x5bf03f +
+        ")\x22>Remover</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20";
+    }),
+    atualizarTotal());
+}
+function a0_0x53ee() {
+  const _0x8f9e0d = [
+    "carrinho",
+    "\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20Venda\x20",
+    "704478aFkokT",
+    "174cjdCkY",
+    ")\x22>Deletar</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</p>",
+    "\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>",
+    "toFixed",
+    "stringify",
+    "toLocaleDateString",
+    "splice",
+    ")\x22>Remover</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22addCarrinho(",
+    "160727veQefj",
+    "usuario",
+    "historico",
+    "getElementById",
+    "preco",
+    "Login\x20bem-sucedido!",
+    "getItem",
+    "produtos",
+    "toLocaleTimeString",
+    "compras",
+    "nome",
+    "Venda\x20finalizada!\x20Total:\x20R$",
+    "\x0a\x20\x20\x20\x20<p>",
+    "\x0a\x20\x20\x20\x20\x20\x20\x20\x20<br>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22deletarVenda(",
+    "addEventListener",
+    "senha",
+    "Por\x20favor,\x20preencha\x20ambos\x20os\x20campos:\x20nome\x20e\x20preço.",
+    "trim",
+    "5rOamMD",
+    "8waGqyk",
+    "push",
+    "forEach",
+    "\x20-\x20",
+    "isArray",
+    "381tSenDW",
+    "Usuário\x20ou\x20senha\x20incorretos.\x20Tente\x20novamente.",
+    "setItem",
+    "innerHTML",
+    "total",
+    ")\x22>Comprar</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</p>",
+    ")\x22>Remover</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20",
+    "\x20-\x20R$",
+    "\x0a\x20\x20\x20\x20\x20\x20\x20\x20<button\x20onclick=\x22removerProduto(",
+    "149860nZkniD",
+    "\x0a\x20\x20\x20\x20<button\x20onclick=\x22removerCarrinho(",
+    "2828203BcWdZX",
+    "Produto\x20adicionado:\x20",
+    "reduce",
+    "823672rbEVbJ",
+    "admin",
+    "parse",
+    "Apenas\x20o\x20administrador\x20pode\x20deletar\x20vendas.",
+    "click",
+    "data",
+    "1791270QCBzXL",
+    "value",
+    "length",
+    "O\x20carrinho\x20está\x20vazio.",
+  ];
+  a0_0x53ee = function () {
+    return _0x8f9e0d;
+  };
+  return a0_0x53ee();
+}
+function atualizarTotal() {
+  const _0x38a7f2 = a0_0x68a0a9;
+  let _0x174147 = compras[_0x38a7f2(0x11b)](
+    (_0x52343c, _0x2fe59e) => _0x52343c + Number(_0x2fe59e[_0x38a7f2(0x135)]),
+    0x0,
+  );
+  totalElement["textContent"] = _0x174147[_0x38a7f2(0x12c)](0x2);
+}
+function finalizarVenda() {
+  const _0x322b15 = a0_0x68a0a9;
+  if (compras[_0x322b15(0x124)] === 0x0) {
+    alert(_0x322b15(0x125));
+    return;
+  }
+  let _0x1180ce = compras[_0x322b15(0x11b)](
+      (_0xf6a29c, _0x4a0922) => _0xf6a29c + Number(_0x4a0922[_0x322b15(0x135)]),
+      0x0,
+    ),
+    _0xec38f8 =
+      JSON[_0x322b15(0x11e)](localStorage[_0x322b15(0xfc)]("historico")) || [];
+  (_0xec38f8[_0x322b15(0x10a)]({
+    produtos: compras,
+    total: _0x1180ce,
+    data: new Date()[_0x322b15(0x12e)](),
+    hora: new Date()[_0x322b15(0xfe)](),
+  }),
+    localStorage[_0x322b15(0x110)](
+      "historico",
+      JSON[_0x322b15(0x12d)](_0xec38f8),
+    ),
+    alert(_0x322b15(0x101) + _0x1180ce[_0x322b15(0x12c)](0x2)),
+    (compras = []),
+    salvarCompras(),
+    atualizarCarrinho());
+}
+function carregarHistorico() {
+  const _0xb106c3 = a0_0x68a0a9;
+  let _0xdd5790 =
+    JSON[_0xb106c3(0x11e)](localStorage["getItem"](_0xb106c3(0x133))) || [];
+  if (!historicoDiv) return;
+  ((historicoDiv[_0xb106c3(0x111)] = ""),
+    _0xdd5790[_0xb106c3(0x10b)]((_0x340044, _0x42a68d) => {
+      const _0x55ed41 = _0xb106c3;
+      historicoDiv[_0x55ed41(0x111)] +=
+        _0x55ed41(0x127) +
+        (_0x42a68d + 0x1) +
+        ":\x20R$" +
+        _0x340044[_0x55ed41(0x112)][_0x55ed41(0x12c)](0x2) +
+        _0x55ed41(0x10c) +
+        _0x340044[_0x55ed41(0x121)] +
+        "\x20" +
+        _0x340044["hora"] +
+        _0x55ed41(0x103) +
+        _0x42a68d +
+        _0x55ed41(0x12a);
+    }));
+}
+function deletarVenda(_0x30965e) {
+  const _0x119a20 = a0_0x68a0a9;
+  if (!temPermissão("admin")) {
+    alert(_0x119a20(0x11f));
+    return;
+  }
+  let _0x122dd4 =
+    JSON[_0x119a20(0x11e)](localStorage[_0x119a20(0xfc)](_0x119a20(0x133))) ||
+    [];
+  (_0x122dd4[_0x119a20(0x12f)](_0x30965e, 0x1),
+    localStorage[_0x119a20(0x110)](
+      _0x119a20(0x133),
+      JSON["stringify"](_0x122dd4),
+    ),
+    carregarHistorico());
+}
+carregarHistorico();
