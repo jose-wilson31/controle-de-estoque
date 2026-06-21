@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disque Bebidas Vendas</title>
+</head>
+<style>
+    body {
+        font-family: Arial;
+        margin-top: 0;
+        margin-left: 20px;
+    }
+
+    input,
+    button {
+        margin: 5px;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    button {
+        cursor: pointer;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+
+    #login {
+        width: 250px;
+        height: auto;
+        margin-top: 20px;
+        display: flex;
+        gap: 5px;
+        margin-left: 60%;
+        align-items: center;
+    }
+    #nav {
+        width: 200px;
+        height: auto;
+        display: flex; 
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+        margin-top: -25px;
+        margin-right: 10px;
+        text-decoration: none;
+        
+    }
+    a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #0f0f0f;
+    }
+</style>
+
+<body>
+    <div id="login">
+        <strong>Login</strong>
+        <input id="usuario" placeholder="Usuário">
+        <strong>Senha:</strong>
+        <input id="senha" type="password" placeholder="Senha">
+        <button id="entrar">Entrar</button>
+    </div>
+    <div id="nav">
+        <a href="./index.html">Início</a>
+        <a href="./produtos.html">Produtos</a>
+        <a href="./historico.html">Histórico</a>
+    </div>
+
+    <h1>🍺 Disque Bebidas - Controle de Vendas</h1>
+
+    <h2>Cadastro de Produto</h2>
+    <input id="nome" placeholder="Nome da bebida">
+    <input id="preco" placeholder="Preço">
+    <button onclick="addProduto()">Cadastrar</button>
+
+    <h2>Carrinho</h2>
+    <div id="carrinho"></div>
+    <p><b>Total:</b> R$ <span id="total">0</span></p>
+    <button onclick="finalizarVenda()">Finalizar Venda</button>
+
+</body>
+<script src="script.js"></script>
+
+</html>
