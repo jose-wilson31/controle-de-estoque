@@ -9,30 +9,33 @@ const entrarBtn = document.getElementById("entrar");
 const usuario = document.getElementById("usuario");
 const senha = document.getElementById("senha");
 
+let logadoAdmin = false;
 function entrar() {
     let usuarioVal = usuario.value.trim();
     let senhaVal = senha.value.trim();
 
     if (usuarioVal === "admin" && senhaVal === "reduce") {
+        logadoAdmin = true;
+
         alert("Login bem-sucedido!");
         
         usuario.value = "";
         senha.value = "";
         return;
     } else {
+        logadoAdmin = false;
+
         alert("Usuário ou senha incorretos. Tente novamente.");
+        logadoAdmin = false;
         usuario.value = "";
         senha.value = "";
-        return;
     }
 }
 entrarBtn.addEventListener("click", entrar);
 
 function temPermissão(role) {
-    const usuarioVal = usuarioInput.value.trim();
-    const senhaVal = senhaInput.value.trim();
     if (role === "admin") {
-        return usuarioVal === "admin" && senhaVal === "reduce";
+        return logadoAdmin;
     }
     return false;
 }
@@ -86,7 +89,7 @@ function produtosCadastrados() {
 
         div.innerHTML += `<p>
         ${index + 1}. ${produto.nome} - R$${preco.toFixed(2)}
-        <button onclick="removerProduto(${index})">Remover</button>
+        <button onclick="removerProduto(${index})">Excluir</button>
         <button onclick="addCarrinho(${index})">Comprar</button>
         </p>`;
     });
@@ -94,18 +97,29 @@ function produtosCadastrados() {
 
 function removerProduto(index) {
     if (!temPermissão("admin")) {
-        alert("Apenas o administrador pode remover produtos.");
+        alert("Apenas o administrador pode Excluir produtos.");
         return;
     }
 
     produtos.splice(index, 1);
+
     salvar();
     produtosCadastrados();
 }
+
 produtosCadastrados();
 
 function removerCarrinho(index) {
+    let valorRemovido = Number(compras[index].preco);
+
+
     compras.splice(index, 1);
+
+    let totalAtual = Number(totalElement.textContent);
+    totalAtual -= valorRemovido;
+
+    totalElement.textContent = totalAtual.toFixed(2);
+
     carrinho.innerHTML = "";
     compras.forEach((produto, indx) => {
         carrinho.innerHTML += `
@@ -116,6 +130,7 @@ function removerCarrinho(index) {
     });
 
     salvarCompras();
+    atualizarCarrinho();
 }
 
 let compras;
@@ -128,8 +143,8 @@ try {
 } catch (e) {
     compras = [];
 }
-
 atualizarCarrinho();
+
 
 function salvarCompras() {
     localStorage.setItem("compras", JSON.stringify(compras));
@@ -138,17 +153,13 @@ function salvarCompras() {
 function addCarrinho(produtoIndex) {
     if (!produtos[produtoIndex]) return;
 
-    let div = document.getElementById("carrinho");
     let produto = produtos[produtoIndex];
     compras.push(produto);
     salvarCompras();
 
-    div.innerHTML += `
-    <p>${produto.nome} - R$${produto.preco.toFixed(2)}
-    <button onclick="removerCarrinho(${compras.length - 1})">Remover</button>
-    </p>
-    `;
+    
 }
+atualizarCarrinho();
 
 function atualizarCarrinho() {
     if (!carrinho) return;
@@ -161,6 +172,7 @@ function atualizarCarrinho() {
             </p>
             `;
     });
+
     atualizarTotal();
 }
 
