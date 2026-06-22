@@ -11,7 +11,7 @@
         overflow-x: hidden;
         overflow-y: auto;
         font-family: Arial;
-        margin-top: 0;
+
     }
 
     input,
@@ -22,22 +22,27 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
+
     header {
         position: fixed;
+        display: flex;
         top: 0;
         left: 0;
-        width: 100%;
-        background-color: white;
+        width: 100vw;
+        height: 290px;
+        background-color: rgb(170, 165, 165);
         z-index: 1000;
         padding: 0 8px;
+        border: 1px solid #ccc;
     }
-    #nav, h1, h2 {
-        padding: 0 8px;
-    }
+
+
     #carrinho {
-        margin-top: 310px;
+        margin-top: 288px;
         padding: 0 8px;
+        margin-left: 55px;
     }
+
     .box {
         border: 1px solid #ccc;
         padding: 10px;
@@ -54,65 +59,182 @@
 
 
     #login {
-        width: 250px;
+        width: 50%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 0;
         display: flex;
         gap: 5px;
-        margin-left: 60%;
         align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 150px;
+        margin-bottom: 150px;
     }
+
+    .esquerda {
+        width: 50%;
+        align-items: flex-start;
+        margin-left: 55px;
+
+    }
+
     #nav {
         width: 200px;
         height: auto;
-        display: flex; 
+        display: flex;
         align-items: center;
-        justify-content: flex-start;
         gap: 5px;
-        margin-top: -25px;
-        margin-right: 10px;
-        text-decoration: none;
-        
+        margin-left: 70%;
+
     }
+
     a {
         margin-right: 10px;
         text-decoration: none;
-        color: #0f0f0f;
+        color: #4434da;
+        font-size: large;
+    }
+
+    #venda {
+        position: fixed;
+        bottom: 90px;
+        right: 5%;
+    }
+
+    #valor {
+        position: fixed;
+        bottom: 85px;
+        left: 80%;
+    }
+
+    footer {
+        width: 100%;
+        height: 55px;
+        position: fixed;
+        bottom: 0;
+        margin-left: 0;
+        text-align: center;
+        background-color: rgb(170, 165, 165);
+    }
+
+    .rodape {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 1326px) {
+        header {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        #nav {
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            margin-left: 60%;
+            padding-top: 40px;
+        }
+
+        #login {
+            position: inherit;
+            width: 50%;
+            display: flex;
+            margin-left: 47%;
+            margin-top: 30px;
+        }
+
+        .esquerda {
+            width: 100%;
+            align-items: center;
+        }
+
+        #carrinho {
+            margin-top: 20px;
+            padding: 0 8px;
+            margin-left: 0;
+        }
+
+        #venda {
+            position: fixed;
+            bottom: 90px;
+            right: 5%;
+        }
+
+        #valor {
+            position: fixed;
+            bottom: 85px;
+            left: 75%;
+        }
+    }
+    
+    @media screen and (min-width: 980px) {
+        #login {
+            position: inherit;
+            width: 50%;
+            display: flex;
+            margin-left: 43%;
+            margin-top: 30px;
+        }
+    #nav {
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            margin-left: 60%;
+            padding-top: 20px;
+        }
+     #valor {
+            position: fixed;
+            bottom: 85px;
+            left: 67%;
+        }
     }
 </style>
 
 <body>
     <header>
-    <div id="login">
-        <strong>Login</strong>
-        <input id="usuario" placeholder="Usuário">
-        <strong>Senha:</strong>
-        <input id="senha" type="password" placeholder="Senha">
-        <button id="entrar">Entrar</button>
-    </div>
-    <div id="nav">
-        <a href="./index.html">Início</a>
-        <a href="./produtos.html">Produtos</a>
-        <a href="./historico.html">Histórico</a>
-    </div>
 
-    <h1>🍺 Disque Bebidas - Controle de Vendas</h1>
 
-    <h2>Cadastro de Produto:</h2>
-    <input id="nome" placeholder="Nome da bebida">
-    <input id="preco" placeholder="Preço">
-    <button onclick="addProduto()">Cadastrar</button>
+        <div class="esquerda">
+            <h1>🍺 Disque Bebidas</h1>
+            <div id="nav">
+                <a href="./index.html">Início</a>
+                <a href="./produtos.html">Produtos</a>
+                <a href="./historico.html">Histórico</a>
+            </div>
 
-    <h2>Carrinho:</h2>
+
+
+
+            <h2>Cadastro de Produto:</h2>
+            <input id="nome" placeholder="Nome da bebida">
+            <input id="preco" placeholder="Preço">
+            <button onclick="addProduto()">Cadastrar</button>
+
+            <h2>Carrinho:</h2>
+        </div>
+
+        <div id="login">
+            <strong>Login</strong>
+            <input id="usuario" placeholder="Usuário">
+            <strong>Senha:</strong>
+            <input id="senha" type="password" placeholder="Senha">
+            <button id="entrar">Entrar</button>
+        </div>
+
     </header>
 
     <div id="carrinho"></div>
-    <p><b>Total:</b> R$ <span id="total">0</span></p>
-    <button onclick="finalizarVenda()">Finalizar Venda</button>
+    <p id="valor"><b>Total:</b> R$ <span id="total">0</span></p>
+    <button id="venda" onclick="finalizarVenda()">Finalizar Venda</button>
 
-     <footer>
-        <p><b>Desenvolvido por:</b> José Wilson</p>
-    </footer>
+    <div class="rodape">
+        <footer>
+            <p><b>Desenvolvido por:</b> José Wilson</p>
+        </footer>
+    </div>
 </body>
 <script src="script-obf.js"></script>
 
