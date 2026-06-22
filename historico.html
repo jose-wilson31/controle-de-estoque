@@ -8,8 +8,10 @@
 </head>
 <style>
     body {
+        overflow-x: hidden;
+        overflow-y: auto;
         font-family: Arial;
-        margin: 20px;
+        margin-top: 0;
     }
 
     input,
@@ -20,7 +22,22 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
-
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1000;
+        padding: 0 8px;
+    }
+    #nav, h2 {
+        padding: 0 8px;
+    }
+    #historico {
+        margin-top: 115px;
+        padding: 0 8px;
+    }
     .box {
         border: 1px solid #ccc;
         padding: 10px;
@@ -34,6 +51,7 @@
         border: none;
         border-radius: 5px;
     }
+
     #login {
         width: 250px;
         height: auto;
@@ -45,15 +63,16 @@
     #nav {
         width: 200px;
         height: auto;
-        display: flex; 
+        display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: 5px;
         margin-top: -25px;
         margin-right: 10px;
         text-decoration: none;
-        
+
     }
+
     a {
         margin-right: 10px;
         text-decoration: none;
@@ -62,6 +81,8 @@
 </style>
 
 <body>
+
+    <header>
     <div id="login">
         <strong>Login</strong>
         <input id="usuario" placeholder="Usuário">
@@ -70,12 +91,13 @@
         <button id="entrar">Entrar</button>
     </div>
     <div id="nav">
-    <a href="./index.html">Início</a>
-    <a href="./produtos.html">Produtos</a>
-    <a href="./historico.html">Histórico</a>
+        <a href="./index.html">Início</a>
+        <a href="./produtos.html">Produtos</a>
+        <a href="./historico.html">Histórico</a>
     </div>
 
-    <h2>Histórico</h2>
+    <h2>Histórico:</h2>
+    </header>
     <div id="historico"></div>
 </body>
 <script src="script-obf.js"></script>
