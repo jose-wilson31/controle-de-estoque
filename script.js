@@ -8,27 +8,41 @@ const usuario = document.getElementById("usuario");
 const senha = document.getElementById("senha");
 const addEstoque = document.getElementById("estoque");
 const addQuantidade = document.getElementById("quantidade");
+const buscarInput = document.getElementById("buscar");
 
 let logadoAdmin = false;
 function entrar() {
+    // estou logando como admin
+    if (logadoAdmin) {
+        logadoAdmin = false;
+
+        entrarBtn.textContent = "Logar";
+
+        alert('Logout realizado com sucesso!');
+        entrarBtn.blur();
+        return;
+    }
+
     let usuarioVal = usuario.value.trim();
     let senhaVal = senha.value.trim();
 
     if (usuarioVal === "admin" && senhaVal === "reduce") {
         logadoAdmin = true;
 
-        alert("Login bem-sucedido!");
+        entrarBtn.textContent = "Logout";
+
+        alert('Login realizado com sucesso!');
 
         usuario.value = "";
         senha.value = "";
-        return;
+
+        entrarBtn.blur();
     } else {
-        logadoAdmin = false;
+        alert('Usuário ou senha incorretos!');
 
-        alert("Usuário ou senha incorretos. Tente novamente.");
-        logadoAdmin = false;
         usuario.value = "";
         senha.value = "";
+       
     }
 }
 entrarBtn.addEventListener("click", entrar);
@@ -57,6 +71,12 @@ function salvar() {
 }
 
 function addProduto() {
+    if (!temPermissão("admin")) {
+        alert("Apenas o administrador pode adicionar produtos.");
+        document.activeElement.blur();
+        return;
+    }
+
     const nome = addNome.value.trim();
     const preco = parseFloat(addPreco.value);
     const quantidade = parseInt(addQuantidade.value);
@@ -71,25 +91,38 @@ function addProduto() {
         alert(
             `Produto adicionado: ${produto.nome} - R$${produto.preco.toFixed(2)} - Estoque: ${produto.estoque}`,
         );
+        addNome.blur();
+        addPreco.blur();
+        addQuantidade.blur();
         salvar();
         
         addNome.value = "";
         addPreco.value = "";
         addQuantidade.value = "";
 
-        produtosCadastrados();
+        renderizarProdutos(produtos);
+
+        document.activeElement.blur(); //remove o foco do botão após o clique
+
     } else {
+        
         alert("Por favor, preencha todos os campos: nome, preço e quantidade.");
     }
 }
 
-function produtosCadastrados() {
-    if (!document.getElementById("produtos")) return;
+function renderizarProdutos(listaProdutos) {
 
     let div = document.getElementById("produtos");
+    if (!div) return;
+
+    const termo = buscarInput.value.toLowerCase();
+
     div.innerHTML = "";
 
-    produtos.forEach((produto, index) => {
+    listaProdutos.forEach((produto, index) => {
+        if (!produto.nome.toLowerCase().includes(termo)) {
+            return;
+        }
 
         let alerta = '';
         let className = produto.estoque <= 5 ? 'estoque-baixo' : '';
@@ -116,33 +149,45 @@ function removerProduto(index) {
     produtos.splice(index, 1);
 
     salvar();
-    produtosCadastrados();
+    renderizarProdutos(produtos);
 }
 
-produtosCadastrados();
+renderizarProdutos(produtos);
 
 function removerCarrinho(index) {
-    let valorRemovido = Number(compras[index].preco);
+    //produto que será removido do carrinho
+    let produto = compras[index];
 
+    //procuar o produto no estoque
+    let produtoEstoque = produtos.find(p => p.nome === produto.nome);
 
+    //devolver o produto ao estoque
+    if (produtoEstoque) {
+        produtoEstoque.estoque++;
+    }
+
+    //remover do carrinho
     compras.splice(index, 1);
 
-    let totalAtual = Number(totalElement.textContent);
-    totalAtual -= valorRemovido;
-
-    totalElement.textContent = totalAtual.toFixed(2);
-
-    carrinho.innerHTML = "";
-    compras.forEach((produto, indx) => {
-        carrinho.innerHTML += `
-            <p>${produto.nome} - R$${produto.preco.toFixed(2)}
-            <button onclick="removerCarrinho(${indx})">Remover</button>
-            </p>
-            `;
-    });
-
+    salvar();
     salvarCompras();
+
+    renderizarProdutos(produtos);
     atualizarCarrinho();
+}
+
+
+function filtrarProdutos() {
+    const termo = buscarInput.value.toLowerCase();
+
+    const produtosFiltrados = produtos.filter(produto =>
+        produto.nome.toLowerCase().includes(termo)
+    );
+    renderizarProdutos(produtosFiltrados);
+}
+
+if (buscarInput) {
+    buscarInput.addEventListener("input", filtrarProdutos);
 }
 
 let compras;
@@ -156,6 +201,7 @@ try {
     compras = [];
 }
 atualizarCarrinho();
+carregarHistorico();
 
 
 function salvarCompras() {
@@ -181,7 +227,7 @@ function addCarrinho(produtoIndex) {
     salvar();
     salvarCompras();
 
-    produtosCadastrados();
+    renderizarProdutos(produtos);
     atualizarCarrinho();
 
     if (produto.estoque <= 5) {
@@ -231,13 +277,15 @@ function finalizarVenda() {
     compras = [];
     salvarCompras();
     atualizarCarrinho();
+    carregarHistorico();
 }
 
 function carregarHistorico() {
-    let historico = JSON.parse(localStorage.getItem("historico")) || [];
+    let historico = JSON.parse(localStorage.getItem("historico") || "[]");
     if (!historicoDiv) return;
 
     historicoDiv.innerHTML = "";
+
     historico.forEach((venda, index) => {
         historicoDiv.innerHTML += `
         <p>
@@ -254,7 +302,7 @@ function deletarVenda(index) {
         return;
     }
 
-    let historico = JSON.parse(localStorage.getItem("historico")) || [];
+    let historico = JSON.parse(localStorage.getItem("historico") || "[]");
     historico.splice(index, 1);
     localStorage.setItem("historico", JSON.stringify(historico));
     carregarHistorico();

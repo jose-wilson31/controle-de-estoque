@@ -58,6 +58,11 @@
         color: white;
         border: none;
         border-radius: 5px;
+        transition: background-color 0.1s;
+    }
+
+    button:hover {
+        background-color: #0a551b;
     }
 
     #login {
@@ -78,6 +83,20 @@
         align-items: flex-start;
         margin-left: 55px;
 
+    }
+
+    #buscar-container {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+
+    #buscar {
+        width: 200px;
+        height: 20px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 
     #nav {
@@ -157,7 +176,12 @@
                 <a href="./produtos.html">Produtos</a>
                 <a href="./historico.html">Histórico</a>
             </div>
+
+            <div id="buscar-container">
             <h3>Produtos:</h3>
+            <input id="buscar" type="text" placeholder="Buscar produto">
+            </div>
+
         </div>
 
         <div id="login">
