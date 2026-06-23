@@ -40,6 +40,7 @@
     #carrinho {
         margin-top: 288px;
         margin-left: 55px;
+        margin-bottom: 50px;
     }
 
     .box {
@@ -92,6 +93,13 @@
         color: #4434da;
         font-size: large;
     }
+    #preco {
+        width: 100px;
+    }
+
+    #quantidade {
+        width: 50px;
+    }
 
     #venda {
         position: fixed;
@@ -102,7 +110,7 @@
     #valor {
         position: fixed;
         bottom: 85px;
-        left: 80%;
+        left: 65%;
     }
 
     footer {
@@ -139,7 +147,7 @@
         #valor {
             position: fixed;
             bottom: 85px;
-            left: 72%;
+            left: 70%;
         }
     }
 
@@ -153,6 +161,9 @@
         #usuario,
         #senha {
             width: 150px;
+        }
+        h3 {
+            display: none;
         }
     }
 </style>
@@ -175,9 +186,10 @@
             <h2>Cadastro de Produto:</h2>
             <input id="nome" placeholder="Nome da bebida">
             <input id="preco" placeholder="Preço">
+            <input id="quantidade" placeholder="Qtd">
             <button onclick="addProduto()">Cadastrar</button>
 
-            <h2>Carrinho:</h2>
+            <h3>Carrinho:</h3>
         </div>
 
         <div id="login">

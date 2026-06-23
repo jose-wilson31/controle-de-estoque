@@ -3,11 +3,11 @@ const addPreco = document.getElementById("preco");
 const carrinho = document.getElementById("carrinho");
 const totalElement = document.getElementById("total");
 const historicoDiv = document.getElementById("historico");
-const usuarioInput = document.getElementById("usuario");
-const senhaInput = document.getElementById("senha");
 const entrarBtn = document.getElementById("entrar");
 const usuario = document.getElementById("usuario");
 const senha = document.getElementById("senha");
+const addEstoque = document.getElementById("estoque");
+const addQuantidade = document.getElementById("quantidade");
 
 let logadoAdmin = false;
 function entrar() {
@@ -18,7 +18,7 @@ function entrar() {
         logadoAdmin = true;
 
         alert("Login bem-sucedido!");
-        
+
         usuario.value = "";
         senha.value = "";
         return;
@@ -59,22 +59,27 @@ function salvar() {
 function addProduto() {
     const nome = addNome.value.trim();
     const preco = parseFloat(addPreco.value);
+    const quantidade = parseInt(addQuantidade.value);
 
-    if (nome && !isNaN(preco)) {
+    if (nome && !isNaN(preco) && !isNaN(quantidade)) {
         const produto = {
             nome: nome,
             preco: parseFloat(preco),
+            estoque: quantidade
         };
         produtos.push(produto);
         alert(
-            `Produto adicionado: ${produto.nome} - R$${produto.preco.toFixed(2)}`,
+            `Produto adicionado: ${produto.nome} - R$${produto.preco.toFixed(2)} - Estoque: ${produto.estoque}`,
         );
         salvar();
+        
         addNome.value = "";
         addPreco.value = "";
+        addQuantidade.value = "";
+
         produtosCadastrados();
     } else {
-        alert("Por favor, preencha ambos os campos: nome e preço.");
+        alert("Por favor, preencha todos os campos: nome, preço e quantidade.");
     }
 }
 
@@ -85,10 +90,17 @@ function produtosCadastrados() {
     div.innerHTML = "";
 
     produtos.forEach((produto, index) => {
-        let preco = Number(produto.preco) || 0;
 
-        div.innerHTML += `<p>
-        ${index + 1}. ${produto.nome} - R$${preco.toFixed(2)}
+        let alerta = '';
+        let className = produto.estoque <= 5 ? 'estoque-baixo' : '';
+
+        if (produto.estoque <= 5) {
+            alerta = ' - <span style="color: red;">⚠️ ESTOQUE BAIXO</span>';
+        }
+
+        div.innerHTML += `<p class="${className}">
+        ${index + 1}. ${produto.nome} - R$${produto.preco.toFixed(2)} - Estoque: ${produto.estoque}${alerta}
+
         <button onclick="removerProduto(${index})">Excluir</button>
         <button onclick="addCarrinho(${index})">Comprar</button>
         </p>`;
@@ -151,15 +163,32 @@ function salvarCompras() {
 }
 
 function addCarrinho(produtoIndex) {
-    if (!produtos[produtoIndex]) return;
 
     let produto = produtos[produtoIndex];
-    compras.push(produto);
+
+    if (produto.estoque <= 0) {
+        alert(`⚠️ Produto esgotado: ${produto.nome}. Não é possível adicionar ao carrinho.`);
+        return;
+    }
+
+    compras.push({
+        nome: produto.nome,
+        preco: produto.preco,
+    });
+
+    produto.estoque --;
+
+    salvar();
     salvarCompras();
 
-    
+    produtosCadastrados();
+    atualizarCarrinho();
+
+    if (produto.estoque <= 5) {
+        alert(`⚠️ Atenção! Estoque baixo de ${produto.nome}. Estoque atual: ${produto.estoque} unidades.`);
+    }
+
 }
-atualizarCarrinho();
 
 function atualizarCarrinho() {
     if (!carrinho) return;
